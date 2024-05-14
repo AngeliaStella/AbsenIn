@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:absenin/bottom_navigation_bar.dart';
 import 'package:absenin/menukelas.dart';
-import 'package:absenin/absensi_screen.dart';
+import 'package:absenin/menukelas.dart';
 import 'package:absenin/login.dart';
 import 'package:absenin/edit_akun.dart';
 
@@ -176,7 +176,7 @@ class ProfilScreen extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => AbsensiScreen(),
+                builder: (context) => kelas(),
               ),
             );
           }

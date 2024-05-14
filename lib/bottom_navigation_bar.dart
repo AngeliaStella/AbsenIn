@@ -33,10 +33,6 @@ class BottomNavigationBarWidget extends StatelessWidget {
           icon: Icon(Icons.account_circle),
           label: 'Profil',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.insert_drive_file),
-          label: 'Bulan',
-        ),
       ],
     );
   }
