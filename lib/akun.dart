@@ -11,6 +11,8 @@ class AbsenApp extends StatefulWidget {
   _AbsenAppState createState() => _AbsenAppState();
 }
 
+// kont
+
 class _AbsenAppState extends State<AbsenApp> {
   List<String> names = ["angeliastella@student.ac.id"]; // List contoh
 
