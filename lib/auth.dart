@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import '/signup.dart';
 import 'package:http/http.dart' as http;
 
 class Auth with ChangeNotifier {
@@ -31,7 +32,7 @@ class Auth with ChangeNotifier {
     }
   }
 
-  Future<void> login(String email, String password) async {
+  Future<void> SignUpScreen(String email, String password) async {
     final url = Uri.parse(
       "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDbV9XUZxZT5rCjpvmDMft27PoJMCArDys",
     );
