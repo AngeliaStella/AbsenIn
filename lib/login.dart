@@ -1,145 +1,128 @@
 import 'package:flutter/material.dart';
-
 import 'package:absenin/signup.dart';
 import 'package:absenin/absensi_screen.dart';
+import 'package:absenin/auth.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(login());
-}
+class Login extends StatelessWidget {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
-class login extends StatelessWidget {
-  const login({Key? key}) : super(key: key);
+  Login({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-        ),
-        body: Padding(
-          padding: EdgeInsets.all(20), // Tambahkan padding di sekitar body.
-          child: SingleChildScrollView(
-            // Menggunakan SingleChildScrollView
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Image.asset(
-                    'asset/image/logo.png', // Pastikan path ke gambar benar.
-                  ),
-                  SizedBox(height: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        'Username',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      TextFormField(
-                        decoration: InputDecoration(
-                          hintText: 'Masukkan Username',
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Color.fromARGB(255, 41, 84, 58)),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Color.fromARGB(255, 41, 84, 58)),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        'Password',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      TextFormField(
-                        obscureText:
-                            true, // Menyembunyikan teks yang dimasukkan
-                        decoration: InputDecoration(
-                          hintText: 'Masukkan Password',
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Color.fromARGB(255, 41, 84, 58)),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Color.fromARGB(255, 41, 84, 58)),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: () {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(20),
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Image.asset(
+                  'asset/image/logo.png',
+                ),
+                SizedBox(height: 20),
+                buildTextField('Email', emailController, false),
+                SizedBox(height: 20),
+                buildTextField('Password', passwordController, true),
+                SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () async {
+                    try {
+                      await Provider.of<Auth>(context, listen: false).login(
+                        emailController.text,
+                        passwordController.text,
+                      );
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => AbsensiScreen()),
+                        MaterialPageRoute(builder: (context) => AbsensiScreen()),
                       );
-                    },
-                    child: Text(
-                      'LOGIN',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
+                    } catch (e) {
+                      print(e);
+                    }
+                  },
+                  child: Text(
+                    'LOGIN',
+                    style: TextStyle(
+                      color: Colors.white,
                     ),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                        Color.fromARGB(255, 41, 84, 58),
-                      ),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      Color.fromARGB(255, 41, 84, 58),
+                    ),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Navigate to the signup page
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => signup()),
-                      );
-                    },
-                    child: Text(
-                      'DAFTAR',
-                      style: TextStyle(
-                        color:
-                            Color.fromARGB(255, 41, 84, 58), // Green text color
-                      ),
+                ),
+                SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Signup()),
+                    );
+                  },
+                  child: Text(
+                    'DAFTAR',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 41, 84, 58),
                     ),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          Colors.white), // White background color
-                      side: MaterialStateProperty.all(BorderSide(
-                        color: Color.fromARGB(
-                            255, 41, 84, 58), // Green border color
-                        width: 2.0,
-                      )),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      Colors.white,
+                    ),
+                    side: MaterialStateProperty.all(BorderSide(
+                      color: Color.fromARGB(255, 41, 84, 58),
+                      width: 2.0,
+                    )),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Widget buildTextField(String labelText, TextEditingController controller, bool obscureText) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          labelText,
+          style: TextStyle(fontSize: 16),
+        ),
+        TextFormField(
+          controller: controller,
+          obscureText: obscureText,
+          decoration: InputDecoration(
+            hintText: 'Masukkan $labelText',
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Color.fromARGB(255, 41, 84, 58)),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Color.fromARGB(255, 41, 84, 58)),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

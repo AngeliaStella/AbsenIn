@@ -15,7 +15,7 @@ class _siswaState extends State<siswa> {
   List<String> names = [
     "Angelia Stella",
     "Ni Luh Putu Aria",
-    "Nova Wirya",
+    "Wenjel",
   ];
 
   void deleteName(int index) {
@@ -38,56 +38,54 @@ class _siswaState extends State<siswa> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 41, 84, 58),
-          title: const Text(
-            "ABSENIN",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24.0,
-            ),
-          ),
-          centerTitle: true,
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Data siswa Yang Hadir",
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                  ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 41, 84, 58),
+        // title: const Text(
+        //   "ABSENIN",
+        //   style: TextStyle(
+        //     color: Colors.white,
+        //     fontSize: 24.0,
+        //   ),
+        // ),
+        //   centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Kehadiran Siswa Pertemuan 2",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
-                SizedBox(height: 15),
-                Container(
-                  height: 1,
-                  color: Colors.grey,
-                  margin: EdgeInsets.symmetric(horizontal: 4),
-                ),
-                SizedBox(height: 8),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: names.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(names[index]),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
+              ),
+              SizedBox(height: 15),
+              Container(
+                height: 1,
+                color: Colors.grey,
+                margin: EdgeInsets.symmetric(horizontal: 4),
+              ),
+              SizedBox(height: 8),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: names.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(names[index]),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
         ),
       ),

@@ -25,7 +25,7 @@ class Bulan extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 41, 84, 58),
         title: const Text(
-          "Scan Camera QR Code",
+          "ABSENIN",
           style: TextStyle(
             color: Colors.white,
             fontSize: 24.0,
@@ -50,7 +50,8 @@ class Bulan extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => kelas(), // Mengirim nama bulan ke halaman Kelas
+                  builder: (context) =>
+                      kelas(), // Mengirim nama bulan ke halaman Kelas
                 ),
               );
             },
@@ -76,7 +77,8 @@ class Bulan extends StatelessWidget {
                     size: 100.0,
                     color: Color.fromARGB(218, 41, 84, 58),
                   ),
-                  const SizedBox(height: 8), // Spasi antara ikon folder dan teks
+                  const SizedBox(
+                      height: 8), // Spasi antara ikon folder dan teks
                   Text(
                     bulan[index],
                     textAlign: TextAlign.center,

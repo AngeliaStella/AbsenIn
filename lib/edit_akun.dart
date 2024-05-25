@@ -16,12 +16,12 @@ class editakun extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontSize: 24.0,
-            // Mengatur warna teks menjadi putih
           ),
         ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.check),
+            color: Colors.white,
             onPressed: () {
               Navigator.push(
                 context,
@@ -42,58 +42,56 @@ class editakun extends StatelessWidget {
             children: [
               SizedBox(height: 20),
               Center(
-                child: Container(
-                  width: 140, // Lebar dan tinggi kontainer foto profil
-                  height: 140,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage(
-                          'asset/image/lisab.jpg'), // Pastikan path ke gambar benar.
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 41, 84, 58),
-                    shape: BoxShape.circle,
-                  ),
-                  padding: EdgeInsets.all(8),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(
-                        icon: Icon(Icons.edit, color: Colors.white, size: 20),
-                        onPressed: () {
-                          // Aksi yang dilakukan ketika tombol edit ditekan
-                          // Misalnya, tampilkan dialog untuk mengubah foto profil
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: Text("Ubah Foto Profil"),
-                                content:
-                                    Text("Aksi untuk mengubah foto profil"),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: Text("Tutup"),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        },
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      width: 140, // Lebar dan tinggi kontainer foto profil
+                      height: 140,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: AssetImage('asset/image/lisab.jpg'),
+                        ),
                       ),
-                    ],
-                  ),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color.fromARGB(
+                              255, 41, 84, 58), // Latar belakang tombol
+                        ),
+                        child: IconButton(
+                          icon: Icon(Icons.edit, color: Colors.white, size: 20),
+                          onPressed: () {
+                            // Aksi yang dilakukan ketika tombol edit ditekan
+                            // Misalnya, tampilkan dialog untuk mengubah foto profil
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text("Edit Foto"),
+                                  content: Text("Foto Profile berhasil diubah"),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text("Tutup"),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(height: 20),

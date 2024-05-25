@@ -1,6 +1,7 @@
+import 'package:absenin/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:absenin/bottom_navigation_bar.dart';
-import 'package:absenin/menukelas.dart';
+import 'package:absenin/menubulan.dart';
 import 'package:absenin/menukelas.dart';
 import 'package:absenin/login.dart';
 import 'package:absenin/edit_akun.dart';
@@ -24,6 +25,7 @@ class ProfilScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.settings),
+            color: Colors.white,
             onPressed: () {
               Navigator.push(
                 context,
@@ -64,7 +66,7 @@ class ProfilScreen extends StatelessWidget {
               ),
               SizedBox(height: 5),
               Text(
-                ' Semangat Wenjel',
+                ' stella mpengharum ruangan',
                 style: TextStyle(fontSize: 14),
               ),
               SizedBox(height: 5),
@@ -79,7 +81,7 @@ class ProfilScreen extends StatelessWidget {
               ),
               SizedBox(height: 5),
               Text(
-                'akuingin@gmail.com',
+                'iyadeh@gmail.com',
                 style: TextStyle(fontSize: 14),
               ),
               SizedBox(height: 5),
@@ -112,7 +114,7 @@ class ProfilScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => login(),
+                        builder: (context) => Bulan(),
                       ),
                     );
                   },
@@ -130,34 +132,6 @@ class ProfilScreen extends StatelessWidget {
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                    ),
-                  ),
-                ),
-              ),
-
-              SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => kelas(),
-                    ),
-                  );
-                },
-                child: Text(
-                  'FILE',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    Color.fromARGB(255, 41, 84, 58),
-                  ),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50.0),
                     ),
                   ),
                 ),
