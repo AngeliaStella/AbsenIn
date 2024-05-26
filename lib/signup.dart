@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:absenin/absensi_screen.dart';
+import 'package:absenin/login.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -106,8 +107,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       );
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => AbsensiScreen()),
+                        MaterialPageRoute(builder: (context) => Login()),
                       );
                     } on FirebaseAuthException catch (e) {
                       // Handle errors

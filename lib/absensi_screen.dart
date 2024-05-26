@@ -3,7 +3,7 @@ import 'package:absenin/kamera_scan_screen.dart';
 import 'package:absenin/profil_screen.dart';
 import 'package:absenin/crud_students.dart';
 import 'package:absenin/menubulan.dart';
-import 'package:absenin/menukelas.dart';
+
 import 'bottom_navigation_bar.dart';
 
 // import 'package:firebase_core/firebase_core.dart';
@@ -128,7 +128,7 @@ class AbsensiScreen extends StatelessWidget {
               context,
               MaterialPageRoute(builder: (context) => KameraScanScreen()),
             );
-          } else if (index == 2) {
+          } else if (index == 3) {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => ProfilScreen()),

@@ -1,13 +1,22 @@
 import 'package:absenin/signup.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:absenin/bottom_navigation_bar.dart';
 import 'package:absenin/menubulan.dart';
 import 'package:absenin/menukelas.dart';
 import 'package:absenin/login.dart';
 import 'package:absenin/edit_akun.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+Future<User?> getUser() async {
+  return FirebaseAuth.instance.authStateChanges().first;
+}
 
 class ProfilScreen extends StatelessWidget {
-  final List<String> names = ["Angelia Stella Medita"];
+  // FirebaseUser user = await FirebaseAuth.instance.currentUser();
+  // String userEmail = user.email;
+
+  // final List<String> emails = [userEmail];
 
   @override
   Widget build(BuildContext context) {
@@ -59,46 +68,26 @@ class ProfilScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
-              Text(
-                'Nama Pengguna',
-                style: TextStyle(color: Colors.grey),
-              ),
-              SizedBox(height: 5),
-              Text(
-                ' stella mpengharum ruangan',
-                style: TextStyle(fontSize: 14),
-              ),
+
               SizedBox(height: 5),
               Divider(
                 color: Colors.grey, // Mengatur warna garis menjadi abu-abu
                 thickness: 1, // Mengatur ketebalan garis
               ),
-              SizedBox(height: 5),
-              Text(
-                'Email',
-                style: TextStyle(color: Colors.grey),
+              FutureBuilder<User?>(
+                future: getUser(),
+                builder: (context, AsyncSnapshot<User?> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return CircularProgressIndicator();
+                  }
+                  String? userEmail = snapshot.data?.email;
+                  return Text(
+                    userEmail ?? 'No Email',
+                    style: TextStyle(fontSize: 24),
+                  );
+                },
               ),
-              SizedBox(height: 5),
-              Text(
-                'iyadeh@gmail.com',
-                style: TextStyle(fontSize: 14),
-              ),
-              SizedBox(height: 5),
-              Divider(
-                color: Colors.grey, // Mengatur warna garis menjadi abu-abu
-                thickness: 1, // Mengatur ketebalan garis
-              ),
-              SizedBox(height: 5),
-              Text(
-                'Password',
-                style: TextStyle(color: Colors.grey),
-              ),
-              SizedBox(height: 5),
-              Text(
-                '12212121', // Password disamarkan
-                style: TextStyle(fontSize: 14),
-              ),
+
               // SizedBox(height: 20),
               // ElevatedButton(
               //   onPressed: () {
@@ -110,13 +99,22 @@ class ProfilScreen extends StatelessWidget {
               SizedBox(height: 10),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Bulan(),
-                      ),
-                    );
+                  onPressed: () async {
+                    // Lakukan proses logout
+                    await FirebaseAuth.instance.signOut().then((value) async {
+                      // Simpan status login ke false saat logout
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      await prefs.setBool('isLoggedIn', false);
+                      print("Anda Logout");
+                      // Navigasikan pengguna kembali ke layar login
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => login(),
+                        ),
+                      );
+                    });
                   },
                   child: Text(
                     'LOGOUT',
