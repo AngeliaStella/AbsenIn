@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 // import 'bottom_navigation_bar.dart';
 import 'package:absenin/bottom_navigation_bar.dart';
 import 'package:absenin/profil_screen.dart';
-
+import 'package:absenin/absensi_screen.dart';
+import 'package:absenin/crud_students.dart';
 import 'dart:developer';
 import 'dart:io';
 
@@ -95,11 +96,19 @@ class _QRViewExampleState extends State<KameraScanScreen> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBarWidget(
-        currentIndex: 1,
+        currentIndex: 2,
         onTap: (index) {
           if (index == 0) {
-            Navigator.pop(context);
-          } else if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AbsensiScreen()),
+            );
+          } else if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CrudStudents()),
+            );
+          } else if (index == 3) {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => ProfilScreen()),

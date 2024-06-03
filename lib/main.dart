@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (ctx) => Auth(),
       child: MaterialApp(
-        home: isLoggedIn ? AbsensiScreen() : Login(),
+        home: isLoggedIn ? AbsensiScreen() : LoginScreen(),
       ),
     );
   }

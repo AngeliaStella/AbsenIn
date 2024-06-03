@@ -27,33 +27,33 @@ class AbsensiScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
-            child: Card(
-              margin: EdgeInsets.all(
-                  16.0), // Optional: to add some margin around the card
-              color: Color.fromARGB(255, 41, 84, 58), // Green background color
-              child: InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => CrudStudents(),
-                  ));
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: 80.0,
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Manajemen Data Siswa',
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.white, // Text color
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          // Center(
+          //   child: Card(
+          //     margin: EdgeInsets.all(
+          //         16.0), // Optional: to add some margin around the card
+          //     color: Color.fromARGB(255, 41, 84, 58), // Green background color
+          //     child: InkWell(
+          //       onTap: () {
+          //         Navigator.of(context).push(MaterialPageRoute(
+          //           builder: (context) => CrudStudents(),
+          //         ));
+          //       },
+          //       child: Container(
+          //         width: double.infinity,
+          //         height: 80.0,
+          //         alignment: Alignment.center,
+          //         child: Text(
+          //           'Manajemen Data Siswa',
+          //           style: TextStyle(
+          //             fontSize: 20.0,
+          //             color: Colors.white, // Text color
+          //             fontWeight: FontWeight.bold,
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
           Expanded(
             child: GridView.builder(
               padding: const EdgeInsets.all(16),
@@ -124,6 +124,11 @@ class AbsensiScreen extends StatelessWidget {
         currentIndex: 0,
         onTap: (index) {
           if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CrudStudents()),
+            );
+          } else if (index == 2) {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => KameraScanScreen()),

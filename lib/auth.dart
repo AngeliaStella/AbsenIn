@@ -1,9 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import '/signup.dart';
-import '/login.dart';
-
 import 'package:http/http.dart' as http;
 
 class Auth with ChangeNotifier {
@@ -36,7 +33,7 @@ class Auth with ChangeNotifier {
   }
 }
 
-Future<void> login(String email, String password) async {
+Future<void> _LoginScreenState(String email, String password) async {
   final url = Uri.parse(
     "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDbV9XUZxZT5rCjpvmDMft27PoJMCArDys",
   );
@@ -53,7 +50,9 @@ Future<void> login(String email, String password) async {
 
     final responseData = json.decode(response.body);
     if (response.statusCode == 200) {
-      print(responseData);
+      // Token autentikasi dapat diperoleh dari responseData['idToken']
+      String authToken = responseData['idToken'];
+      print(authToken);
     } else {
       throw Exception(responseData['error']['message']);
     }

@@ -22,12 +22,12 @@ class BottomNavigationBarWidget extends StatelessWidget {
       selectedItemColor: Colors.white,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(Icons.folder),
-          label: 'Manajemen',
+          icon: Icon(Icons.event_note),
+          label: 'Data Absensi',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.event_note),
-          label: 'Data Absensi',
+          label: 'Manajemen',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.camera_alt),

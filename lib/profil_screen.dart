@@ -1,9 +1,9 @@
-import 'package:absenin/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:absenin/bottom_navigation_bar.dart';
-import 'package:absenin/menubulan.dart';
-import 'package:absenin/menukelas.dart';
+import 'package:absenin/absensi_screen.dart';
+import 'package:absenin/crud_students.dart';
+import 'package:absenin/kamera_scan_screen.dart';
 import 'package:absenin/login.dart';
 import 'package:absenin/edit_akun.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -111,7 +111,7 @@ class ProfilScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Login(),
+                          builder: (context) => LoginScreen(),
                         ),
                       );
                     });
@@ -139,17 +139,22 @@ class ProfilScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBarWidget(
-        currentIndex: 2,
+        currentIndex: 3,
         onTap: (index) {
           if (index == 0) {
-            Navigator.pop(context);
-          } else if (index == 1) {
-            Navigator.pop(context);
             Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (context) => kelas(),
-              ),
+              MaterialPageRoute(builder: (context) => AbsensiScreen()),
+            );
+          } else if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CrudStudents()),
+            );
+          } else if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => KameraScanScreen()),
             );
           }
         },

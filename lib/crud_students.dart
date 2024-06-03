@@ -5,6 +5,8 @@ import 'bottom_navigation_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
+import 'bottom_navigation_bar.dart';
+import 'package:absenin/absensi_screen.dart';
 
 class CrudStudents extends StatefulWidget {
   @override
@@ -297,14 +299,19 @@ class _CrudStudentsState extends State<CrudStudents> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBarWidget(
-        currentIndex: 0,
+        currentIndex: 1,
         onTap: (index) {
-          if (index == 1) {
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AbsensiScreen()),
+            );
+          } else if (index == 2) {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => KameraScanScreen()),
             );
-          } else if (index == 2) {
+          } else if (index == 3) {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => ProfilScreen()),
