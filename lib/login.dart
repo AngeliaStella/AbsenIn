@@ -265,7 +265,7 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              'asset/image/science.png',
+              'asset/image/new.png',
               width: 100, // Lebar yang diinginkan
               fit: BoxFit.contain,
             ),

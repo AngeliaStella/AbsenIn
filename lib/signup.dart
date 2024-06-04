@@ -45,7 +45,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Image.asset('asset/image/logo.png'),
+                Image.asset('asset/image/new.png'),
                 SizedBox(height: 20),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
